@@ -1,0 +1,62 @@
+{% extends "layout/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container pt-5">
+    <div class="d-flex flex-column text-center mb-5">
+        <h1 class="m-0">Наш оператор свяжется с вами!</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 mb-5 text-center">
+            В современном деловом мире информация и материальные ценности требуют надежной защиты. Наша компания предлагает передовые решения для безопасности офисов, которые включают в себя установку систем видеонаблюдения, контроль доступа и интеграцию с современными технологиями. Это позволяет не только предотвратить несанкционированный доступ, но и защитить конфиденциальную информацию, что является критически важным для успешного ведения бизнеса.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="contact-form bg-white">
+                <div id="success"></div>
+
+                <form name="sentMessage" id="contactForm" method="POST">
+                    {% csrf_token %}
+                    <div class="control-group">
+                        <input type="text" class="form-control" name="{{form.name.name}}" id="{{ form.name.auto_id }}" placeholder="{{ form.name.label }}" required="required" data-validation-required-message="Please enter your name" />
+                        <p class="help-block text-danger">
+                            {% for e in form.name.errors %}{{e}}{% endfor %}
+                        </p>
+                    </div>
+                    <div class="control-group">
+                        <input id="phone" type="text" class="form-control" name="{{form.number.name}}" id="{{ form.number.auto_id }}" placeholder="Номер телефона" required="required" data-validation-required-message="Please enter your email" />
+                        <p class="help-block text-danger">
+                            {% for e in form.number.errors %}{{e}}{% endfor %}
+                        </p>
+                    </div>
+                    <div class="control-group">
+                        <textarea class="form-control" rows="6" name="{{form.text.name}}" id="{{ form.text.auto_id }}" placeholder="{{ form.text.label }}" data-validation-required-message="Please enter your message"></textarea>
+                        <p class="help-block text-danger">
+                            {% for e in form.text.errors %}{{e}}{% endfor %}
+                        </p>
+                    </div>
+                    <div class="control-group">
+                        <label for="{{form.privacy.auto_id}}">
+                            <input type="checkbox" id="{{form.privacy.auto_id}}" name="{{form.privacy.name}}" required="required" />
+                            Даю согласие на обработку персональных данных
+                        </label>
+                        <p class="help-block text-danger">
+                            {% for e in form.privacy.errors %}{{e}}{% endfor %}
+                        </p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" type="submit" id="sendMessageButton">Оставить Заявку</button>
+                        <div class="mt-3" style="font-size: 13px;">
+                            Нажимая на кнопку "Оставить Заявку", я подтверждаю, что ознакомлен с <a target="_blank" href="{% url 'privacy' %}">Политикой обработки персональных данных.</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <iframe style="width: 100%; height: 500px;" src="https://yandex.ru/map-widget/v1/?ll=39.666047%2C47.234072&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1MzE2NjAzNRIo0KDQvtGB0YHQuNGPLCDQoNC-0YHRgtC-0LIt0L3QsC3QlNC-0L3RgyIKDRHgHkIVcOM8Qg%2C%2C&z=11.43" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout/base.html" %}
+{% load static %}
+{% block content %}
+
+<div id="services" class="container pt-5">
+  <div class="d-flex flex-column text-center mb-5">
+    <h5 class="text-primary mb-3">Наши услуги </h5>
+    <h1 class="m-0">Услуги безопасности высшего класса</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 mb-5 text-center">
+      В условиях стремительно меняющегося мира, где безопасность становится одним из приоритетных аспектов жизни, наша компания играет ключевую роль в обеспечении спокойствия и уверенности для наших клиентов. Мы понимаем, что безопасность — это не просто набор технологий, а комплексное решение, которое затрагивает все аспекты жизни и бизнеса.
+    </div>
+  </div>
+  <div class="row pb-3 justify-content-center">
+    {% for service in services %}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card mb-2 p-3">
+        <img class="card-img-top" src="{% if service.picture %}{{service.picture.url}}{% endif %}" alt="" />
+        <div class="card-body bg-secondary d-flex align-items-center p-0">
+          <h3
+            class="font-weight-normal d-flex flex-shrink-0 align-items-center justify-content-center bg-primary text-white m-0 mr-3"
+            style="width: 45px; height: 45px"
+          >{{service.number}}</h3>
+          <h6 class="card-title text-white text-truncate m-0">
+            {{service.name}}
+          </h6>
+        </div>
+        <div class="card-footer">
+          {{service.text}}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row justify-content-center">
+    <a href="{% url 'order' %}" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Заказать Услугу</a>
+  </div>
+</div>
+
+
+{% endblock %}

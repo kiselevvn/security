@@ -1,0 +1,51 @@
+{% load extra_settings %}
+<div class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5">
+  <div class="row pt-5">
+    <div class="col-lg-4 col-md-12 mb-5">
+      <h1 class="mb-3 display-5 text-capitalize font-italic text-white">
+        <span class="text-primary">Горизонт</span> Безопасности
+      </h1>
+      <p class="mb-2">
+        С 5-летним опытом в сфере безопасности, мы предлагаем проверенные решения и высококвалифицированные услуги. Наша команда профессионалов готова обеспечить надежную защиту для вашего бизнеса и личной жизни.
+      </p>
+      <a target="_blank" class="" href="{% url 'privacy' %}">Политика обработки персональных данных</a>
+    </div>
+    <div class="col-lg-8 col-md-12">
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-5 px-4">
+          <h5 class="text-primary mb-4">Quick Links</h5>
+          <div class="d-flex flex-column justify-content-start">
+            {% if request.path != '/' %}
+            <a class="text-white mb-2" href="{% url 'home' %}">
+              <i class="fa fa-angle-right mr-2"></i>На главную
+            </a>
+            {% endif %}
+            <a class="text-white mb-2" href="{% url 'about' %}">
+              <i class="fa fa-angle-right mr-2"></i>О нас
+            </a>
+            <a class="text-white mb-2" href="{% url 'services' %}">
+              <i class="fa fa-angle-right mr-2"></i>Услуги
+            </a>
+            <a class="text-white mb-2" href="{% url 'reviews' %}">
+              <i class="fa fa-angle-right mr-2"></i>Отзывы
+            </a>
+            <a class="text-white mb-2" href="{% url 'order' %}">
+              <i class="fa fa-angle-right mr-2"></i>Заказать услугу
+            </a>
+            <a class="text-white" href="{% url 'review' %}">
+              <i class="fa fa-angle-right mr-2"></i>Оставить отзыв
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 mb-5 px-4">
+          <h5 class="text-primary mb-4">Контакты</h5>
+          <p>
+            <i class="fa fa-map-marker-alt mr-2"></i>{% get_setting 'ADDRESS' %}
+          </p>
+          <p><i class="fa fa-phone-alt mr-2"></i>{% get_setting 'PHONE' %}</p>
+          <p><i class="fa fa-envelope mr-2"></i>{% get_setting 'EMAIL' %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
