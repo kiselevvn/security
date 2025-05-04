@@ -18,8 +18,8 @@ services:
       gunicorn --workers 3 --timeout 600 --chdir ./backend main.wsgi:application -b 0.0.0.0:8000"
     volumes:
       - .:/app
-      - static_volume:/app/public/static
-      - media_volume:/app/public/media
+      - ./public/static:/app/public/static
+      - ./public/media:/app/public/media
     ports:
       - "8000:8000"
     depends_on:
