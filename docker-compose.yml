@@ -15,7 +15,7 @@ services:
     command: sh -c "
       python ./backend/manage.py collectstatic --noinput &&
       python ./backend/manage.py migrate &&
-      gunicorn --workers 3 --timeout 600 --chdir ./backend config.wsgi:application -b 0.0.0.0:8000"
+      gunicorn --workers 3 --timeout 600 --chdir ./backend main.wsgi:application -b 0.0.0.0:8000"
     volumes:
       - .:/app
       - static_volume:/app/public/static
