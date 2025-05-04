@@ -12,7 +12,10 @@ services:
 
   web:
     build: .
-    command: gunicorn backend.wsgi:application --bind 0.0.0.0:8000
+    command: sh -c "
+      python ./backend/manage.py collectstatic --noinput &&
+      python ./backend/manage.py migrate &&
+      gunicorn --workers 3 --timeout 600 --chdir ./backend config.wsgi:application -b 0.0.0.0:8000"
     volumes:
       - .:/app
       - static_volume:/app/public/static
