@@ -23,3 +23,7 @@ class OrderCreateView(FormView):
     success_url = "/success-order/"
     form_class = OrderForm
 
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+    

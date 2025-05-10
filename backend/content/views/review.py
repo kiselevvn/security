@@ -20,3 +20,8 @@ class ReviewCreateView(FormView):
     template_name = "pages/review.html"
     success_url = "/success-review/"
     form_class = ReviewForm
+    
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+    
